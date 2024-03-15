@@ -7,6 +7,7 @@ public class RabbitMovement : MonoBehaviour
 {
     public float speed = 3;
     public Vector3 startingPos;
+    public Rigidbody rigidbody;
     // Start is called before the first frame update
     void Start()
     {

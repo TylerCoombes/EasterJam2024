@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public Vector2 turn;
     public GameObject bulletSpawn;
     // Start is called before the first frame update
     void Start()
@@ -15,10 +14,6 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        turn.x += Input.GetAxis("Mouse X");
-        turn.y += Input.GetAxis("Mouse Y");
-        transform.localRotation = Quaternion.Euler(turn.y, turn.x, 0);
-
         Shoot();
     }
 
@@ -28,10 +23,11 @@ public class GunController : MonoBehaviour
         {
             RaycastHit hitInfo;
 
-            if(Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.forward, out hitInfo, Mathf.Infinity))
+            if(Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.up, out hitInfo, Mathf.Infinity))
             {
                 if(hitInfo.collider.gameObject.CompareTag("Target"))
                 {
+                    Debug.Log("TargetShot");
                     Destroy(hitInfo.collider.gameObject);
                 }
             }
