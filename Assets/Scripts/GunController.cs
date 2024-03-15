@@ -5,6 +5,7 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public GameObject bulletSpawn;
+    public ScoreController scoreController;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +28,15 @@ public class GunController : MonoBehaviour
             {
                 if(hitInfo.collider.gameObject.CompareTag("Target"))
                 {
-                    Debug.Log("TargetShot");
                     Destroy(hitInfo.collider.gameObject);
+                    scoreController.score += 10;
+                    Debug.Log(scoreController.score);
+                }
+
+                if(hitInfo.collider.gameObject.CompareTag("DontShoot"))
+                {
+                    Destroy(hitInfo.collider.gameObject);
+                    scoreController.score -= 10;
                 }
             }
         }

@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawn: {fileID: 0}
+  scoreController: {fileID: 2028807879}
 --- !u!114 &104430327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,6 +1017,9 @@ MonoBehaviour:
   spawnPoints: []
   transforms: []
   targetTime: 0
+  whatSpawns: 0
+  dontShootPrefab: {fileID: 626716691813041945, guid: ef1958e0ed076414ea2987cf268cc605,
+    type: 3}
 --- !u!1001 &667386898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1791,6 +1795,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 604569920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2028807878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2028807880}
+  - component: {fileID: 2028807879}
+  m_Layer: 0
+  m_Name: ScoreManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2028807879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028807878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a47a871ae20d5747a692e3dc50635be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 0
+--- !u!4 &2028807880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028807878}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.2713194, y: 10.125549, z: -10.301485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2037264755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1913,3 +1962,4 @@ SceneRoots:
   - {fileID: 604569920}
   - {fileID: 949307099}
   - {fileID: 307590188}
+  - {fileID: 2028807880}

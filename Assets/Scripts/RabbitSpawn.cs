@@ -10,6 +10,9 @@ public class RabbitSpawn : MonoBehaviour
     public GameObject[] spawnPoints;
     public List<Vector3> transforms;
     public float targetTime;
+    public int whatSpawns = 0;
+
+    public GameObject dontShootPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,14 +30,23 @@ public class RabbitSpawn : MonoBehaviour
         targetTime -= Time.deltaTime;
         if (targetTime <= 0)
         {
-            SpawnRabbits();
-            targetTime = Random.Range(3, 6);
+            Spawn();
+            whatSpawns = Random.Range(0, 2);
+            targetTime = Random.Range(2, 4);
             //Debug.Log(targetTime);
         }
     }
 
-    public void SpawnRabbits()
+    public void Spawn()
     {
-        Instantiate(rabbitPrefab, transforms[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+        if(whatSpawns == 0)
+        {
+            Instantiate(rabbitPrefab, transforms[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(dontShootPrefab, transforms[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+        }
     }
+
 }
