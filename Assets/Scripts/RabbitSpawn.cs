@@ -11,6 +11,7 @@ public class RabbitSpawn : MonoBehaviour
     public List<Vector3> transforms;
     public float targetTime;
     public int whatSpawns = 0;
+    
 
     public GameObject dontShootPrefab;
     // Start is called before the first frame update

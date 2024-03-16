@@ -28,8 +28,11 @@ public class GunController : MonoBehaviour
             {
                 if(hitInfo.collider.gameObject.CompareTag("Target"))
                 {
+                    RabbitMovement rabbitMovement = hitInfo.collider.GetComponent<RabbitMovement>();
                     Destroy(hitInfo.collider.gameObject);
-                    scoreController.score += 10;
+                    Debug.Log(rabbitMovement.timeAlive);
+                    scoreController.score += 10 - ((int)rabbitMovement.timeAlive);
+                    scoreController.scoreText.text = scoreController.score.ToString();
                     Debug.Log(scoreController.score);
                 }
 
@@ -37,6 +40,7 @@ public class GunController : MonoBehaviour
                 {
                     Destroy(hitInfo.collider.gameObject);
                     scoreController.score -= 10;
+                    scoreController.scoreText.text = scoreController.score.ToString();
                 }
             }
         }
