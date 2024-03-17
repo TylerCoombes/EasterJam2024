@@ -8,7 +8,7 @@ public class RabbitSpawn : MonoBehaviour
 {
     public GameObject rabbitPrefab;
     public GameObject[] spawnPoints;
-    public List<Vector3> transforms;
+    public List<Transform> transforms;
     public float targetTime;
     public int whatSpawns = 0;
 
@@ -31,7 +31,7 @@ public class RabbitSpawn : MonoBehaviour
 
         foreach (GameObject spawnPoint in spawnPoints)
         {
-            transforms.Add(new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z));
+            transforms.Add(spawnPoint.transform);
         }
 
         StartCoroutine(SpawnEnemies());
@@ -40,26 +40,7 @@ public class RabbitSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* targetTime -= Time.deltaTime;
-        if (targetTime <= 0)
-        {
-            Spawn();
-            whatSpawns = Random.Range(0, 2);
-            targetTime = Random.Range(2, 4);
-            //Debug.Log(targetTime);
-        }*/
-    }
 
-    public void Spawn()
-    {
-        if(whatSpawns == 0)
-        {
-            Instantiate(rabbitPrefab, transforms[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
-        }
-        else
-        {
-            Instantiate(dontShootPrefab, transforms[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
-        }
     }
 
     public IEnumerator SpawnEnemies()
@@ -73,15 +54,17 @@ public class RabbitSpawn : MonoBehaviour
 
         while (rabbitsSpawned < numberOfRabbitsToSpawn)
         {
+            Transform randomTransform = transforms[Random.Range(0, spawnPoints.Length)];
+
             whatSpawns = Random.Range(0, 2);
             if (whatSpawns == 0)
             {
-                Instantiate(rabbitPrefab, transforms[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+                Instantiate(rabbitPrefab, randomTransform.position, randomTransform.rotation);
                 rabbitsSpawned++;
             }
             else
             {
-                Instantiate(dontShootPrefab, transforms[Random.Range(0, spawnPoints.Length)], Quaternion.identity);
+                Instantiate(dontShootPrefab, randomTransform.position, randomTransform.rotation);
             }
             spawnDelay = Random.Range(2, 4);
             yield return wait;
