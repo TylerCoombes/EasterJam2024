@@ -10,9 +10,12 @@ public class RabbitMovement : MonoBehaviour
     public float speed = 3;
     public Vector3 startingPos;
     public float timeAlive = 0;
+
+    private RabbitSpawn rabbitSpawn;
     // Start is called before the first frame update
     void Start()
     {
+        rabbitSpawn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<RabbitSpawn>();
         startingPos = gameObject.transform.position;
     }
 
@@ -36,7 +39,20 @@ public class RabbitMovement : MonoBehaviour
 
         if (transform.position == moveLeft || transform.position == moveRight)
         {
-            Destroy(gameObject);
+            Death();
         }
+    }
+
+    public void Death()
+    {
+        if (gameObject.CompareTag("Target"))
+        {
+            rabbitSpawn.rabbitsAlive--;
+            if (rabbitSpawn.rabbitsAlive == 0)
+            {
+                rabbitSpawn.StartCoroutine(rabbitSpawn.SpawnEnemies());
+            }
+        }
+        Destroy(gameObject);
     }
 }

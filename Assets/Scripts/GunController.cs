@@ -29,7 +29,7 @@ public class GunController : MonoBehaviour
                 if(hitInfo.collider.gameObject.CompareTag("Target"))
                 {
                     RabbitMovement rabbitMovement = hitInfo.collider.GetComponent<RabbitMovement>();
-                    Destroy(hitInfo.collider.gameObject);
+                    rabbitMovement.Death();
                     Debug.Log(rabbitMovement.timeAlive);
                     scoreController.score += 10 - ((int)rabbitMovement.timeAlive);
                     scoreController.scoreText.text = scoreController.score.ToString();

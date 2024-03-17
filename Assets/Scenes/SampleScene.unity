@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 604569921}
   m_Layer: 0
   m_Name: SpawnPoints
-  m_TagString: Untagged
+  m_TagString: Spawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1019,6 +1019,11 @@ MonoBehaviour:
   transforms: []
   targetTime: 0
   whatSpawns: 0
+  numberOfRabbitsToSpawn: 10
+  spawnDelay: 2
+  level: 0
+  rabbitsSpawned: 0
+  rabbitsAlive: 0
   dontShootPrefab: {fileID: 626716691813041945, guid: ef1958e0ed076414ea2987cf268cc605,
     type: 3}
 --- !u!1001 &667386898
