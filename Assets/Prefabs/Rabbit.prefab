@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8821090660726574745}
   - component: {fileID: -4861545630114379784}
   - component: {fileID: -9113343801714538050}
+  - component: {fileID: 732219432923307310}
   m_Layer: 0
   m_Name: Rabbit
   m_TagString: Target
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   startingPos: {x: 0, y: 0, z: 0}
-  isMoving: 0
+  timeAlive: 0
 --- !u!64 &-9113343801714538050
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -146,3 +147,24 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &732219432923307310
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626716691813041945}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8025108b20ecba4439f49a2705210855, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
