@@ -14,14 +14,10 @@ public class RabbitSpawn : MonoBehaviour
 
     public int numberOfRabbitsToSpawn = 10;
     public float spawnDelay = 2;
-    [SerializeField]
-    private int level = 0;
+    public int level = 0;
     [SerializeField]
     private int rabbitsSpawned;
     public int rabbitsAlive = 0;
- 
-
-    
 
     public GameObject dontShootPrefab;
     // Start is called before the first frame update
@@ -39,6 +35,11 @@ public class RabbitSpawn : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+
+    }
+
+    public void LevelChange()
     {
 
     }

@@ -7,9 +7,11 @@ using UnityEngine.Rendering;
 
 public class RabbitMovement : MonoBehaviour
 {
-    public float speed = 3;
+    public float speed;
     public Vector3 startingPos;
     public float timeAlive = 0;
+
+    public AnimationCurve speedCurve;
 
     private RabbitSpawn rabbitSpawn;
     // Start is called before the first frame update
@@ -17,6 +19,8 @@ public class RabbitMovement : MonoBehaviour
     {
         rabbitSpawn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<RabbitSpawn>();
         startingPos = gameObject.transform.position;
+
+        speed = speedCurve.Evaluate(rabbitSpawn.level);
     }
 
     // Update is called once per frame
@@ -51,6 +55,7 @@ public class RabbitMovement : MonoBehaviour
             if (rabbitSpawn.rabbitsAlive == 0)
             {
                 rabbitSpawn.StartCoroutine(rabbitSpawn.SpawnEnemies());
+                rabbitSpawn.LevelChange();
             }
         }
         Destroy(gameObject);
