@@ -1165,7 +1165,7 @@ MonoBehaviour:
   level: 0
   rabbitsSpawned: 0
   rabbitsAlive: 0
-  dontShootPrefab: {fileID: 626716691813041945, guid: ef1958e0ed076414ea2987cf268cc605,
+  dontShootPrefab: {fileID: 5392130037869166907, guid: 2f7d11e339c72fd4b9bc1594cf9b2319,
     type: 3}
 --- !u!1001 &667386898
 PrefabInstance:
