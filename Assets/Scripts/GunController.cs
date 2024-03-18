@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GunController : MonoBehaviour
@@ -9,6 +10,8 @@ public class GunController : MonoBehaviour
     public RabbitSpawn rabbitSpawn;
     [SerializeField]
     private float points;
+
+    public RaycastHit hitInfo;
 
     public AnimationCurve pointsCurve;
     // Start is called before the first frame update
@@ -27,7 +30,7 @@ public class GunController : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            RaycastHit hitInfo;
+            //RaycastHit hitInfo;
 
             if(Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.up, out hitInfo, Mathf.Infinity))
             {
@@ -38,6 +41,8 @@ public class GunController : MonoBehaviour
                     float scoreHold = (pointsCurve.Evaluate(rabbitSpawn.level)) * (rabbitMovement.pointsPercentage);
                     scoreController.score += ((int)scoreHold);
                     scoreController.scoreText.text = scoreController.score.ToString();
+                    scoreController.pointsForKillText.text = ((int)scoreHold).ToString();
+                    scoreController.PointsForKill();
                     Debug.Log(scoreController.score);
                 }
 

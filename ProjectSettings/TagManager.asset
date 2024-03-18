@@ -8,6 +8,7 @@ TagManager:
   - SpawnPoint
   - DontShoot
   - Spawner
+  - TextPoint
   layers:
   - Default
   - TransparentFX
