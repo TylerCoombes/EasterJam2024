@@ -6,6 +6,11 @@ public class GunController : MonoBehaviour
 {
     public GameObject bulletSpawn;
     public ScoreController scoreController;
+    public RabbitSpawn rabbitSpawn;
+    [SerializeField]
+    private float points;
+
+    public AnimationCurve pointsCurve;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +35,8 @@ public class GunController : MonoBehaviour
                 {
                     RabbitMovement rabbitMovement = hitInfo.collider.GetComponent<RabbitMovement>();
                     rabbitMovement.Death();
-                    Debug.Log(rabbitMovement.timeAlive);
-                    scoreController.score += 10 - ((int)rabbitMovement.timeAlive);
+                    float scoreHold = (pointsCurve.Evaluate(rabbitSpawn.level)) * (rabbitMovement.pointsPercentage);
+                    scoreController.score += ((int)scoreHold);
                     scoreController.scoreText.text = scoreController.score.ToString();
                     Debug.Log(scoreController.score);
                 }

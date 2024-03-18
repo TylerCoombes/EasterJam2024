@@ -10,6 +10,9 @@ public class RabbitMovement : MonoBehaviour
     public float speed;
     public Vector3 startingPos;
     public float timeAlive = 0;
+    private float distanceTraveled;
+
+    public float pointsPercentage;
 
     public AnimationCurve speedCurve;
 
@@ -34,11 +37,15 @@ public class RabbitMovement : MonoBehaviour
         if (startingPos.x < 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, moveRight, speed * Time.deltaTime);
+            distanceTraveled = Vector3.Distance(gameObject.transform.position, moveRight);
+            Debug.Log(distanceTraveled);
         }
 
         if (startingPos.x > 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, moveLeft, speed * Time.deltaTime);
+            distanceTraveled = Vector3.Distance(gameObject.transform.position, moveLeft);
+            Debug.Log(distanceTraveled);
         }
 
         if (transform.position == moveLeft || transform.position == moveRight)
@@ -51,6 +58,9 @@ public class RabbitMovement : MonoBehaviour
     {
         if (gameObject.CompareTag("Target"))
         {
+            pointsPercentage = distanceTraveled / 35; 
+
+            Debug.Log("Death" + pointsPercentage);
             rabbitSpawn.rabbitsAlive--;
             if (rabbitSpawn.rabbitsAlive == 0)
             {
