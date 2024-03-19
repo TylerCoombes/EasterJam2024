@@ -52,6 +52,11 @@ public class RabbitMovement : MonoBehaviour
         {
             Death();
         }
+
+        if (rabbitSpawn.rabbitsAlive == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void Death()
@@ -64,7 +69,7 @@ public class RabbitMovement : MonoBehaviour
             rabbitSpawn.rabbitsAlive--;
             if (rabbitSpawn.rabbitsAlive == 0)
             {
-                rabbitSpawn.StartCoroutine(rabbitSpawn.SpawnEnemies());
+                //rabbitSpawn.StartCoroutine(rabbitSpawn.SpawnEnemies());
                 rabbitSpawn.LevelChange();
             }
         }

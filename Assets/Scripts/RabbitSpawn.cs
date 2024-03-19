@@ -41,7 +41,20 @@ public class RabbitSpawn : MonoBehaviour
 
     public void LevelChange()
     {
+        if (level > 5)
+        {
+            // game over screen here
+        }
+        else
+        {
+            Invoke("BeginSpawning", 5f);
+        }
+        
+    }
 
+    private void BeginSpawning()
+    {
+        StartCoroutine(SpawnEnemies());
     }
 
     public IEnumerator SpawnEnemies()
