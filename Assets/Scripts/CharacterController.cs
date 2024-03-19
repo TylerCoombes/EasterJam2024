@@ -28,7 +28,7 @@ public class CharacterController : MonoBehaviour
         {
             y = Input.GetAxis("Mouse X");
             x = Input.GetAxis("Mouse Y");
-            rotate = new Vector3(x, y * sensitivity, 0);
+            rotate = new Vector3(-x, y, 0) * -sensitivity;
             transform.eulerAngles = transform.eulerAngles - rotate;
 
             LimitRot();
