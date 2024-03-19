@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -20,6 +21,8 @@ public class RabbitSpawn : MonoBehaviour
     public int rabbitsAlive = 0;
 
     public GameObject dontShootPrefab;
+
+    public GameObject nextLevelText;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,8 @@ public class RabbitSpawn : MonoBehaviour
         }
 
         StartCoroutine(SpawnEnemies());
+
+        nextLevelText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -50,6 +55,9 @@ public class RabbitSpawn : MonoBehaviour
             Invoke("BeginSpawning", 5f);
         }
         
+        nextLevelText.GetComponent<TextMeshProUGUI>().text = "Level " + (level + 1);
+        nextLevelText.SetActive(true);
+        StartCoroutine("RemoveText");
     }
 
     private void BeginSpawning()
@@ -86,5 +94,11 @@ public class RabbitSpawn : MonoBehaviour
         }
 
         yield break;
+    }
+
+    public IEnumerator RemoveText()
+    {
+        yield return new WaitForSeconds(3);
+        nextLevelText.SetActive(false);
     }
 }
