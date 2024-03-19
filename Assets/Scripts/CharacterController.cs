@@ -13,6 +13,8 @@ public class CharacterController : MonoBehaviour
 
     public float maxXRot = 30f;
     public float minXRot = -30f;
+
+    public UIHandler uiHandler;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,12 +24,15 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        y = Input.GetAxis("Mouse X");
-        x = Input.GetAxis("Mouse Y");
-        rotate = new Vector3 (x, y * sensitivity, 0);
-        transform.eulerAngles = transform.eulerAngles - rotate;
+        if (!uiHandler.paused)
+        {
+            y = Input.GetAxis("Mouse X");
+            x = Input.GetAxis("Mouse Y");
+            rotate = new Vector3(x, y * sensitivity, 0);
+            transform.eulerAngles = transform.eulerAngles - rotate;
 
-        LimitRot();
+            LimitRot();
+        }
     }
 
     public void LimitRot()
