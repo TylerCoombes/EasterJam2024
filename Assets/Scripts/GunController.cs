@@ -17,6 +17,8 @@ public class GunController : MonoBehaviour
     public RaycastHit hitInfo;
 
     public AnimationCurve pointsCurve;
+
+    public UIHandler UIHandler;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +36,14 @@ public class GunController : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            //RaycastHit hitInfo;
-            flash.Play();
-            shotSound.Play();
+            if (!UIHandler.paused)
+            {
+                flash.Play();
+                shotSound.Play();
+            }
 
-            if(Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.up, out hitInfo, Mathf.Infinity))
+            //RaycastHit hitInfo;
+            if (Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.up, out hitInfo, Mathf.Infinity))
             {
                 if(hitInfo.collider.gameObject.CompareTag("Target"))
                 {

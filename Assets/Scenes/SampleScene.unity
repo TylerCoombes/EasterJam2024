@@ -405,6 +405,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  UIHandler: {fileID: 502588524}
 --- !u!114 &104430327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +436,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 30d80fa9a5a7c4d45bd8c05a61cb2f3f, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.165
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
