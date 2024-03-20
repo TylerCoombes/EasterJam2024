@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class GunController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GunController : MonoBehaviour
     public RabbitSpawn rabbitSpawn;
     [SerializeField]
     private float points;
+    public ParticleSystem flash;
 
     public RaycastHit hitInfo;
 
@@ -18,6 +20,7 @@ public class GunController : MonoBehaviour
     void Start()
     {
         bulletSpawn = GameObject.Find("BulletSpawn");
+       
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class GunController : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             //RaycastHit hitInfo;
+            flash.Play();
 
             if(Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.up, out hitInfo, Mathf.Infinity))
             {
