@@ -40,6 +40,9 @@ public class RabbitSpawn : MonoBehaviour
         //StartCoroutine(SpawnEnemies());
         StartCoroutine(RemoveText());
         endGamePanel.SetActive(false);
+
+        Time.timeScale = 1.0f;
+        Debug.Log("Scene Loaded Properly");
     }
 
     // Update is called once per frame

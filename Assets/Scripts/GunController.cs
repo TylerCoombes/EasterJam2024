@@ -12,6 +12,7 @@ public class GunController : MonoBehaviour
     [SerializeField]
     private float points;
     public ParticleSystem flash;
+    public AudioSource shotSound;
 
     public RaycastHit hitInfo;
 
@@ -35,6 +36,7 @@ public class GunController : MonoBehaviour
         {
             //RaycastHit hitInfo;
             flash.Play();
+            shotSound.Play();
 
             if(Physics.Raycast(bulletSpawn.transform.position, bulletSpawn.transform.up, out hitInfo, Mathf.Infinity))
             {
