@@ -23,6 +23,8 @@ public class RabbitSpawn : MonoBehaviour
     public GameObject dontShootPrefab;
 
     public GameObject nextLevelText;
+    public GameObject endGamePanel;
+    public UIHandler uiHandler;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +35,11 @@ public class RabbitSpawn : MonoBehaviour
             transforms.Add(spawnPoint.transform);
         }
 
-        StartCoroutine(SpawnEnemies());
+        Invoke("BeginSpawning", 5f);
 
-        nextLevelText.SetActive(false);
+        //StartCoroutine(SpawnEnemies());
+        StartCoroutine(RemoveText());
+        endGamePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -48,7 +52,9 @@ public class RabbitSpawn : MonoBehaviour
     {
         if (level > 5)
         {
-            // game over screen here
+            endGamePanel.SetActive(true);
+            uiHandler.paused = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {

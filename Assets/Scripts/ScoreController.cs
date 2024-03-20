@@ -10,8 +10,10 @@ public class ScoreController : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
     public TextMeshPro pointsForKillText;
+    public TextMeshProUGUI rabbitsAliveText;
 
     public GunController gunController;
+    public RabbitSpawn rabbitSpawn;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +24,7 @@ public class ScoreController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        rabbitsAliveText.text = "Rabbits Alive: " + rabbitSpawn.rabbitsAlive.ToString();
     }
 
     public void PointsForKill()

@@ -52,4 +52,14 @@ public class UIHandler : MonoBehaviour
             paused = true;
         }
     }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
